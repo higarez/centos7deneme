@@ -2,8 +2,7 @@
 # Bu araç @keyiflerolsun tarafından | @KekikAkademi için yazılmıştır.
 
 #------------------#
-KULLANICI="tarak"
-SIFRE="kurek"
+
 #------------------#
 
 #------------------#
@@ -57,7 +56,7 @@ ipv6_olustur() {
 
 veri_olustur() {
     seq $IPV6_ILK_PORT $SON_PORT | while read port; do
-        echo "${KULLANICI}$(rastgele)/${SIFRE}$(rastgele)/$IP4/$port/$(ipv6_olustur $IP6)"
+        echo "$IP4/$port/$(ipv6_olustur $IP6)"
     done
 }
 
@@ -93,7 +92,7 @@ EOF
 squid_yukle() {
     echo -e "\n\n\t$yesil Squid Yükleniyor..\n$renkreset\n"
     yum install nano dos2unix squid httpd-tools -y      # >/dev/null
-    htpasswd -bc /etc/squid/passwd $KULLANICI $SIFRE
+    htpasswd -bc /etc/squid/passwd 
 
     cat >/etc/squid/squid.conf <<EOF
 auth_param basic program /usr/lib64/squid/basic_ncsa_auth /etc/squid/passwd
@@ -140,7 +139,7 @@ file_io_yukle() {
     URL=$(echo "$JSON" | jq --raw-output '.link')
 
     clear
-    echo -e "\n\n\t$yesil Proxyler Hazır!$mor Format »$sari IP:PORT:KULLANICI:SIFRE$renkreset"
+    echo -e "\n\n\t$yesil Proxyler Hazır!$mor Format »$sari IP:PORT$renkreset"
     echo -e "\n$mor IPv6 Zip İndirme Bağlantısı:$yesil ${URL}$renkreset"
     echo -e "$mor IPv6 Zip Şifresi:$yesil ${PASS}$renkreset"
 }
@@ -150,7 +149,7 @@ socks5_yukle() {
 
     wget -qO dante_socks.sh https://raw.githubusercontent.com/Lozy/danted/master/install_centos.sh
     chmod +x dante_socks.sh
-    ./dante_socks.sh --port=$SOCKS5_PORT --user=$KULLANICI --passwd=$SIFRE    # >/dev/null
+    ./dante_socks.sh --port=$SOCKS5_PORT# >/dev/null
     rm -rf dante_socks.sh
 
     iptables -I INPUT -p tcp --dport $SOCKS5_PORT -j ACCEPT
@@ -169,8 +168,8 @@ if [[ $IP6 == "" ]]; then
     socks5_yukle
     clear
     echo -e "\n\n\t$kirmizi Makinenizin IPv6 Desteği Bulunmamaktadır..$renkreset\n"
-    echo -e "\n$sari IPv4   Proxy »$yesil ${IP4}:${IPV4_PORT}:${KULLANICI}:${SIFRE}$renkreset"
-    echo -e "$sari SOCKS5 Proxy »$yesil ${IP4}:${SOCKS5_PORT}:${KULLANICI}:${SIFRE}$renkreset\n"
+    echo -e "\n$sari IPv4   Proxy »$yesil ${IP4}:${IPV4_PORT}$renkreset"
+    echo -e "$sari SOCKS5 Proxy »$yesil ${IP4}:${SOCKS5_PORT}$renkreset\n"
     rm -rf /dev/null
     exit 0
 fi
@@ -205,7 +204,7 @@ bash /etc/rc.local
 
 squid_yukle && socks5_yukle && proxy_txt && jq_yukle && file_io_yukle
 
-echo -e "\n$sari IPv4   Proxy »$yesil ${IP4}:${IPV4_PORT}:${KULLANICI}:${SIFRE}$renkreset"
-echo -e "$sari SOCKS5 Proxy »$yesil ${IP4}:${SOCKS5_PORT}:${KULLANICI}:${SIFRE}$renkreset\n"
+echo -e "\n$sari IPv4   Proxy »$yesil ${IP4}:${IPV4_PORT}$renkreset"
+echo -e "$sari SOCKS5 Proxy »$yesil ${IP4}:${SOCKS5_PORT}$renkreset\n"
 
 rm -rf /dev/null
