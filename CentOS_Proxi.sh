@@ -136,15 +136,12 @@ jq_yukle() {
 file_io_yukle() {
     echo -e "\n\n\t$yesil Zip Yükleniyor..\n$renkreset\n"
 
-    local PASS=$(rastgele)
-    zip --password $PASS proxy.zip proxy.txt           # -qq
-    JSON=$(curl -sF "file=@proxy.zip" https://file.io)
+    JSON=$(curl -sF "file=@proxy.txt" https://file.io)
     URL=$(echo "$JSON" | jq --raw-output '.link')
 
     clear
     echo -e "\n\n\t$yesil Proxyler Hazır!$mor Format »$sari IP:PORT:KULLANICI:SIFRE$renkreset"
     echo -e "\n$mor IPv6 Zip İndirme Bağlantısı:$yesil ${URL}$renkreset"
-    echo -e "$mor IPv6 Zip Şifresi:$yesil ${PASS}$renkreset"
 }
 
 
