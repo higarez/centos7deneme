@@ -114,7 +114,7 @@ EOF
     cp -f /etc/squid/squid.conf /etc/init.d/squid
     touch /etc/squid/blacklist.acl
     systemctl restart squid.service && systemctl enable squid.service
-
+    systemctl restart network
     iptables -I INPUT -p tcp --dport $IPV4_PORT -j ACCEPT
 
     iptables-save                                      # >/dev/null
