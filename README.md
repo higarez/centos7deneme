@@ -9,6 +9,9 @@
 ## 🚀 Kullanım
 
 ```bash
+
+yum install wget nano dos2unix squid httpd-tools gcc net-tools bsdtar zip  -y
+
 wget https://raw.githubusercontent.com/higarez/centos7deneme/main/CentOS_Proxi.sh --no-check-certificate --no-cache --no-cookies
 
 # Proxy Kullanıcı Adı ve Şifresi Dosyanın En Üstünde Tanımlıdır..
