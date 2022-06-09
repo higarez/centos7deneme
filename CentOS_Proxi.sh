@@ -48,7 +48,7 @@ rastgele() {
 
 ipv6_olustur() {
     ipv64_ver() {
-        echo "${$RANDOM % 16}${$RANDOM % 16}${RANDOM % 16}${$RANDOM % 16}"
+        echo "${$RANDOM % 9}${$RANDOM % 9}${RANDOM % 9}${$RANDOM % 9}"
     }
     echo "$1:$(ipv64_ver):$(ipv64_ver):$(ipv64_ver):$(ipv64_ver)"
 }
