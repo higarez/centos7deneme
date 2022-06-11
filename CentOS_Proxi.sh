@@ -82,9 +82,7 @@ setuid 65535
 flush
 auth none
 
-users $(awk -F "/" 'BEGIN{ORS="";}' ${VERI})
-
-$(awk -F "/" '{print "auth strong\n" \
+$(awk -F "/" '{print "auth none\n" \
 "proxy -6 -n -a -p" $4 " -i" $3 " -e"$5"\n" \
 "flush\n"}' ${VERI})
 EOF
@@ -120,7 +118,7 @@ EOF
 
 proxy_txt() {
     cat >proxy.txt <<EOF
-$(awk -F "/" '{print $3 ":" $4 }' ${VERI})
+$(awk -F "/" '{print $1 ":" $2 }' ${VERI})
 EOF
 }
 
