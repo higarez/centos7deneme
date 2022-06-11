@@ -61,13 +61,13 @@ veri_olustur() {
 
 iptable_olustur() {
     cat <<EOF
-    $(awk -F "/" '{print "iptables -I INPUT -p tcp --dport " $4 "  -m state --state NEW -j ACCEPT"}' ${VERI})
+    $(awk -F "/" '{print "iptables -I INPUT -p tcp --dport " $2 "  -m state --state NEW -j ACCEPT"}' ${VERI})
 EOF
 }
 
 ifconfig_olustur() {
     cat <<EOF
-$(awk -F "/" '{print "ifconfig eth0 inet6 add " $5 "/64"}' ${VERI})
+$(awk -F "/" '{print "ifconfig eth0 inet6 add " $3 "/64"}' ${VERI})
 EOF
 }
 
@@ -83,7 +83,7 @@ flush
 auth none
 
 $(awk -F "/" '{print "auth none\n" \
-"proxy -6 -n -a -p" $1 " -i" $3 " -e"$2"\n" \
+"proxy -6 -n -a -p" $2 " -i" $1 " -e"$3"\n" \
 "flush\n"}' ${VERI})
 EOF
 }
