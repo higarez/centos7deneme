@@ -57,7 +57,7 @@ ipv6_olustur() {
 
 veri_olustur() {
     seq $IPV6_ILK_PORT $SON_PORT | while read port; do
-        echo "${KULLANICI}$(rastgele)/${SIFRE}$(rastgele)/$IP4/$port/$(ipv6_olustur $IP6)"
+        echo "${KULLANICI}/${SIFRE}/$IP4/$port/$(ipv6_olustur $IP6)"
     done
 }
 
@@ -138,8 +138,7 @@ file_io_yukle() {
     echo -e "\n\n\t$yesil Zip Yükleniyor..\n$renkreset\n"
 
     local PASS=$(rastgele)
-    zip --password $PASS proxy.zip proxy.txt           # -qq
-    JSON=$(curl -sF "file=@proxy.zip" https://file.io)
+    JSON=$(curl -sF "file=@proxy.txt" https://file.io)
     URL=$(echo "$JSON" | jq --raw-output '.link')
 
     clear
@@ -175,7 +174,6 @@ if [[ $IP6 == "" ]]; then
     echo -e "\n$sari IPv4   Proxy »$yesil ${IP4}:${IPV4_PORT}:${KULLANICI}:${SIFRE}$renkreset"
     echo -e "$sari SOCKS5 Proxy »$yesil ${IP4}:${SOCKS5_PORT}:${KULLANICI}:${SIFRE}$renkreset\n"
     rm -rf /dev/null
-	systemctl restart network
     exit 0
 fi
 
@@ -202,7 +200,6 @@ cat >>/etc/rc.local <<EOF
 bash ${YOL}/iptable_yapilandir.sh >/dev/null
 bash ${YOL}/ifconfig_yapilandir.sh >/dev/null
 ulimit -n 10048
-systemctl restart network
 service 3proxy start
 EOF
 
