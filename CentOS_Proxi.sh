@@ -83,7 +83,7 @@ flush
 auth none
 
 $(awk -F "/" '{print "auth none\n" \
-"proxy -6 -n -a -p" $4 " -i" $3 " -e"$5"\n" \
+"proxy -6 -n -a -p" $1 " -i" $3 " -e"$2"\n" \
 "flush\n"}' ${VERI})
 EOF
 }
