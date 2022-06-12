@@ -44,14 +44,14 @@ rastgele() {
     echo
 }
 
-array=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
+ipv6_k=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
 ipv6_olustur() {
-    a=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
-    b=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
-    c=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
-    d=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
-    echo $network:$a:$b:$c:$d
+    ipv64_ver() {
+        echo "${ipv6_k[$RANDOM % 16]}${ipv6_k[$RANDOM % 16]}${ipv6_k[$RANDOM % 16]}${ipv6_k[$RANDOM % 16]}"
+    }
+    echo "$1:$(ipv64_ver):$(ipv64_ver):$(ipv64_ver):$(ipv64_ver)"
 }
+
 
 veri_olustur() {
     seq $IPV6_ILK_PORT $SON_PORT | while read port; do
