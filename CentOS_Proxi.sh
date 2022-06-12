@@ -90,7 +90,7 @@ EOF
 
 squid_yukle() {
     echo -e "\n\n\t$yesil Squid Yükleniyor..\n$renkreset\n"
-    yum install nano dos2unix squid httpd-tools -y      # >/dev/null
+    #yum install nano dos2unix squid httpd-tools -y      # >/dev/null
     htpasswd -bc /etc/squid/passwd 
 
     cat >/etc/squid/squid.conf <<EOF
@@ -157,7 +157,7 @@ IP6=$(curl -6 -s icanhazip.com | cut -f1-4 -d':')
 
 echo -e "\n\t$sari IPv4 »$yesil ${IP4}$sari | IPv6 için Sub »$yesil ${IP6}$renkreset"
 echo -e "\n\n\t$yesil Gerekli Paketler Yükleniyor..$renkreset\n"
-yum -y install gcc net-tools bsdtar zip                 # >/dev/null
+#yum -y install gcc net-tools bsdtar zip                 # >/dev/null
 
 if [[ $IP6 == "" ]]; then
     squid_yukle
