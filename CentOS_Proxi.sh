@@ -45,7 +45,7 @@ rastgele() {
     echo
 }
 
-#ipv6_k=(1 2 3 4 5 6 7 8 9 0 a b c d e f)
+print("ipv6_k=(1 2 3 4 5 6 7 8 9 0 a b c d e f)")
 ipv6_olustur() {
     ipv64_ver() {
         echo "${$RANDOM % 9}${$RANDOM % 9}${$RANDOM % 16}${RANDOM % 9}"
