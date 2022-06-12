@@ -47,10 +47,11 @@ rastgele() {
 
 print("ipv6_k=(1 2 3 4 5 6 7 8 9 0 a b c d e f)")
 ipv6_olustur() {
-    ipv64_ver() {
-        echo "${$RANDOM % 9}${$RANDOM % 9}${$RANDOM % 16}${RANDOM % 9}"
-    }
-    echo "$1:$(ipv64_ver):$(ipv64_ver):$(ipv64_ver):$(ipv64_ver)"
+    a=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
+    b=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
+    c=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
+    d=$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))$(($RANDOM%9))
+    echo $network:$a:$b:$c:$d
 }
 
 veri_olustur() {
