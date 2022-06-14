@@ -24,6 +24,7 @@ mor='\e[0;35m'
 #------------------#
 
 yukle_3proxy() {
+    yum install make -y
     echo -e "\n\n\t$yesil 3Proxy Yükleniyor..\n$renkreset\n"
     # URL="https://github.com/z3APA3A/3proxy/archive/3proxy-0.8.6.tar.gz"
     URL="https://github.com/keyiflerolsun/CentOS_Proxi/raw/main/Paketler/3proxy-3proxy-0.8.6.tar.gz"
@@ -90,7 +91,7 @@ EOF
 
 squid_yukle() {
     echo -e "\n\n\t$yesil Squid Yükleniyor..\n$renkreset\n"
-    yum install nano dos2unix squid httpd-tools -y      # >/dev/null
+    yum install nano dos2unix squid httpd-tools iptables -y      # >/dev/null
     htpasswd -bc /etc/squid/passwd 
 
     cat >/etc/squid/squid.conf <<EOF
