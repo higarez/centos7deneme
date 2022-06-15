@@ -161,7 +161,7 @@ yukle_3proxy
 echo -e "\n\n$sari Çalışma Dizini » /home/CentOS_Proxi_Yukle$renkreset"
 YOL="/home/CentOS_Proxi_Yukle"
 VERI="${YOL}/veri.txt"
-ADET="200"
+ADET="500"
 mkdir -p $YOL && cd $_
 
 #echo -e "\n$mor Kaç adet IPv6 proxy oluşturmak istiyorsunuz?$kirmizi Örnek 500 : $renkreset"
