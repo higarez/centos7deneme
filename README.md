@@ -10,9 +10,21 @@
 
 ```bash
 
-yum install wget nano dos2unix squid httpd-tools gcc net-tools bsdtar zip  -y
-
+yum install wget nano -y
 wget https://raw.githubusercontent.com/higarez/centos7deneme/main/CentOS_Proxi.sh --no-check-certificate --no-cache --no-cookies
+nano /etc/rc.local (Son Satırı Sil sırasıyla Ctrl+x > Y > Enter tuşlarına bas)
+chmod +x /etc/rc.local
+chmod +x CentOS_Proxi.sh 
+nano CentOS_Proxi.sh 
+(
+cat >>/etc/rc.local <<EOF
+bash ${YOL}/iptable_yapilandir.sh >/dev/null
+bash ${YOL}/ifconfig_yapilandir.sh >/dev/null
+ulimit -n 10048
+service 3proxy start
+EOF
+) Satırlarını Sil SırasıylaCtrl+x > Y > Enter tuşlarına bas)
+
 
 # Proxy Kullanıcı Adı ve Şifresi Dosyanın En Üstünde Tanımlıdır..
 
