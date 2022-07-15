@@ -15,6 +15,7 @@ wget https://raw.githubusercontent.com/higarez/centos7deneme/main/CentOS_Proxi.s
 nano /etc/rc.local (Son Satırı Sil sırasıyla Ctrl+x > Y > Enter tuşlarına bas)
 chmod +x /etc/rc.local
 chmod +x CentOS_Proxi.sh 
+./CentOS_Proxi.sh (İşlem bittikten sonra)
 nano CentOS_Proxi.sh 
 (
 cat >>/etc/rc.local <<EOF
